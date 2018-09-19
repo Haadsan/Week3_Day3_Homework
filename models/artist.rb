@@ -54,7 +54,7 @@ def self.find_by_id(id)
   values = [@id]
   result = SqlRunner.run(sql, values)
   @id = result[0]["id"].to_i  # database object saved/held here
-  result_hash = result[0]  # converted here database object to a ruby object
+  result_hash = result[0]  # converted here from database object to a ruby object
   return Artist.new(result_hash)
 end
 
