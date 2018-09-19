@@ -12,7 +12,7 @@ def initialize(options)
   @artist_id = options["artist_id"].to_i
 end
 
-def save
+def save()
   sql = "INSERT INTO albums (title, genre, artist_id)
   VALUES ($1, $2, $3) RETURNING * "
   values = [@title, @genre, @artist_id]
@@ -26,16 +26,23 @@ def update()
   SqlRunner.run(sql, values)
 end
 
-def self.all
+def self.all()
   sql = "SELECT * FROM albums"
   albums = SqlRunner.run(sql)
   return albums.map {|album_hash| Album.new(album_hash)}
 end
 
-def self.delete_all
+def self.delete_all()
   sql = "DELETE FROM albums"
   SqlRunner.run(sql)
 end
+
+def delete()
+  sql = "DELETE FROM albums WHERE id = $1"
+  values = [@id]
+  SqlRunner.run(sql, values)
+end
+
 
 def artists()
   sql = "SELECT * FROM artists WHERE id = $1"

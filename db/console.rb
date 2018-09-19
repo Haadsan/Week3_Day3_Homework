@@ -30,9 +30,23 @@ album2 = Album.new ({
 
 album2.save
 
+album3 = Album.new ({
+  "title" => "Space Oddity",
+  "genre" => "Space-Rock",
+  "artist_id" => artist1.id
+  })
+album3.save
+
 
 artist1.albums
 album1.artists
+
+# update
+album1.title = "Ashes to Ashes"
+album1.title
+
+# delete
+album3.delete
 
 binding.pry
 nil
