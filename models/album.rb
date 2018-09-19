@@ -51,5 +51,13 @@ def artists()
   return artists.map{|artist_hash| Artist.new(artist_hash)}
 end
 
+def self.find_by_id(id)
+  sql = "SELECT * FROM albums WHERE id = $1"
+  values = [@id]
+  result = SqlRunner.run(sql, values)
+  @id = result[0]["id"].to_i  # database object saved/held here
+  result_hash = result[0]  # converted here database object to a ruby object
+  return Album.new(result_hash)
+end
 
 end

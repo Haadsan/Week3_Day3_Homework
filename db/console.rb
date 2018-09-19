@@ -48,5 +48,13 @@ album1.title
 # delete
 album3.delete
 
+# find_by_id
+album1.id
+artist1.id
+
+# All
+Artist.all
+Album.all
+
 binding.pry
 nil
